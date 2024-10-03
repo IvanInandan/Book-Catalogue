@@ -11,15 +11,16 @@ html {
 }
 
 body {
-    font-family:'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family:'Inter', sans-serif;
     font-weight: 300;
-    margin: 0;
-    padding: 0;
+    background: url(../img/bg.png);
+    background-size: cover;
     overflow: hidden;
 }
 
-p {
-    margin: 10px 0;
+svg {
+    position: absolute;
+    z-index: -1;
 }
 
 .book-dialog {
@@ -31,6 +32,7 @@ p {
 }
 
 .heading {
+    margin: 20px 0;
     font-size: 1.25em;
     color: #fff;
 }
@@ -81,3 +83,105 @@ input[type='number'] {
     cursor: pointer;
     background: #f4b651;
 }
+
+.page-container {
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-rows: 75px 1fr;
+}
+
+.header {
+    background: #35363E;
+    box-shadow: 1px 1px 20px #171717;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.title {
+    color: #fff;
+}
+
+.add-icon {
+    height: 30px;
+    width: 30px;
+    filter: invert(100%);
+}
+
+.show-form, .remove-button {
+    background: none;
+    border: none;
+    transition: transform 300ms ease-in-out;
+    margin-left: auto;
+}
+
+.show-form:hover,
+.remove-button:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+
+    gap: 100px;
+    margin: 50px;
+    overflow: scroll;
+}
+
+.book {
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    background: #E9E7D7;
+    border-radius: 10px;
+    box-shadow: 7px 7px 20px #171717;
+}
+
+.info-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-grow: 1;
+}
+
+.book-title {
+    font-size: 1.5rem;
+}
+
+.book-author {
+    font-size: .75rem;
+}
+
+.book-pages {
+
+}
+
+.book-read {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.toggle-read {
+    width: 75%;
+    padding: 20px;
+}
+
+.book-remove {
+    margin-top: auto;
+    margin-left: auto;
+    padding: 10px;
+}
+
+.remove-icon {
+    height: 25px;
+    width: 25px;
+}
+
+

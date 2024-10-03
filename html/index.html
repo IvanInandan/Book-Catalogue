@@ -10,11 +10,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 </head>
 
 <body>
+    <svg viewBox="0 0 150 200" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#222222"
+            d="M31.5,-29.6C44.7,-26.4,62.2,-20.2,65.9,-10C69.5,0.1,59.5,14.3,47.9,21.3C36.3,28.3,23.2,28.1,9.6,38.1C-4,48.2,-18.2,68.6,-29.9,69.7C-41.7,70.9,-51,52.9,-49.9,37.3C-48.8,21.7,-37.4,8.6,-36.2,-7.8C-35.1,-24.2,-44.2,-43.9,-39.9,-48.7C-35.6,-53.6,-17.8,-43.6,-4.3,-38.4C9.1,-33.2,18.2,-32.9,31.5,-29.6Z"
+            transform="translate(24 0)" />
+    </svg>
+
     <dialog class="book-dialog">
         <h3 class="heading">Build your library</h3>
         <p class="description">Track your catalogue by logging books you've read!</p>
@@ -43,7 +50,28 @@
         </form>
     </dialog>
 
-    <button class="show-form">Add a book</button>
+    <div class="page-container">
+        <div class="header">
+            <h1 class="title">Library</h1>
+            <button class="show-form"><img class="add-icon" src="../img/add.png" alt=""></button>
+        </div>
+        <div class="content">
+            <div class="book">
+                <div class="info-container">
+                    <div class="book-title">Harry Potter</div>
+                    <div class="book-author">J.K. Rowling</div>
+                    <div class="book-pages">437</div>
+                    <div class="book-read">
+                        <button class="toggle-read">Read</button>
+                    </div>
+                </div>
+                <div class="book-remove">
+                    <button class="remove-button"><img src="../img/remove.png" alt="" class="remove-icon"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 </body>
 
 </html>
