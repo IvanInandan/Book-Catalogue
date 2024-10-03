@@ -14,12 +14,15 @@ function addBookToLibrary() {
 const dialog = document.querySelector(".book-dialog");
 const showButton = document.querySelector(".show-form");
 const closeButton = document.querySelector(".close-dialog");
+const form = document.querySelector(".book-form");
 
-showButton.addEventListener("click", () => {
+showButton.addEventListener("click", (e) => {
     dialog.showModal();
 });
 
-closeButton.addEventListener("click", () => {
+closeButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    form.reset();
     dialog.close();
 });
 
