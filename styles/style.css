@@ -1,30 +1,83 @@
-dialog {
-    border-radius: 20px;
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
 }
 
-.book-form {
-    display: grid;
-    grid-template-columns: repeat(autofill, minmax(250px, 1fr));
-    gap: 10px;
+html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    font-family:'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 300;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+p {
+    margin: 10px 0;
+}
+
+.book-dialog {
+    margin: auto;
+    background: #32323b;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 1px 1px 20px #171717;
+}
+
+.heading {
+    font-size: 1.25em;
+    color: #fff;
+}
+
+.description {
+    font-size: 0.85em;
+    color: #999A9E;
 }
 
 .form-field {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
-    gap: 10px;
-}
-
-.form-field > label {
-    justify-self: center;
-}
-
-.form-field > input {
-    justify-self: center;
-}
-
-.form-buttons {
+    width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 10px;
+    margin: 20px 0;
+}
+
+label {
+    color: #fff;
+}
+
+input[type='text'],
+input[type='number'] {
+    text-indent: 10px;
+    width: 100%;
+    border: 1px solid #444;
+    border-radius: 5px;
+    background: #1d1e22;
+    color: #fff;
+    padding: 10px 0;
+}
+
+.submit-button,
+.close-dialog {
+    border: none;
+    width: 100%;
+    border-radius: 5px;
+    padding: 12px 0;
+    font-size: 14px;
+    background: #5168F4;
+    text-align: center;
+    transition: background 500ms ease;
+    color: #fff;
+}
+
+.submit-button:hover,
+.close-dialog:hover {
+    cursor: pointer;
+    background: #f4b651;
 }
