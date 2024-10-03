@@ -1,0 +1,30 @@
+dialog {
+    border-radius: 20px;
+}
+
+.book-form {
+    display: grid;
+    grid-template-columns: repeat(autofill, minmax(250px, 1fr));
+    gap: 10px;
+}
+
+.form-field {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 10px;
+}
+
+.form-field > label {
+    justify-self: center;
+}
+
+.form-field > input {
+    justify-self: center;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
