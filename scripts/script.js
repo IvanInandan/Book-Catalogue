@@ -1,8 +1,8 @@
 const myLibrary = [];
 
-function Book(author, title, pages, read) {
-    this.author = author;
+function Book(title, author, pages, read) {
     this.title = title;
+    this.author = author;
     this.pages = pages;
     this.read = read;
     this.id = generateRandomID();
@@ -178,7 +178,11 @@ form.addEventListener("submit", (e) => {
             }
         }).showToast();
 
+        console.log({title, author, pages, read});
+
         const book = new Book(title, author, pages, read);
+
+        console.log(book);
 
         addBookToLibrary(book, myLibrary);
         displayLibrary(myLibrary);
