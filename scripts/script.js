@@ -5,6 +5,11 @@ function Book(author, title, pages, read) {
     this.title = title;
     this.pages = pages;
     this.read = read;
+    this.id = generateRandomID();
+}
+
+function generateRandomID() {
+    return Math.random().toString(36).substring(2, 10);
 }
 
 function addBookToLibrary(book, library) {
@@ -24,15 +29,44 @@ function displayLibrary(library) {
     content.innerHTML = newContent.innerHTML;
 }
 
-function createCard(book){
-    let readText;
+function toggleRead(bookID) {
+    let foundBook = null;
 
-    if (book.read === true){
-        readText = "Read";
-    } else {
-        readText = "Not read"
+    for (const books of myLibrary) {
+        if (books.id === bookID) {
+            foundBook = books;
+            break;
+        }
     }
 
+    const index = myLibrary.indexOf(foundBook);
+
+    if (index > -1)
+        myLibrary[index].read = !myLibrary[index].read;
+
+    return myLibrary[index].read;
+}
+
+function deleteCard(bookID) {
+    let foundBook = null;
+
+    for (const books of myLibrary) {
+        if (books.id === bookID) {
+            foundBook = books;
+            break;
+        }
+    }
+
+    const index = myLibrary.indexOf(foundBook);
+
+    if (index > -1)
+        myLibrary.splice(index, 1);
+
+
+    displayLibrary(myLibrary);
+}
+
+function createCard(book) {
     const card = document.createElement('div');
     card.classList.add('book');
 
@@ -55,8 +89,14 @@ function createCard(book){
     bookRead.classList.add('book-read');
 
     const toggleRead = document.createElement('button');
-    toggleRead.textContent = readText;
     toggleRead.classList.add('toggle-read');
+    if (book.read === true){
+        toggleRead.textContent = "Read";
+        toggleRead.classList.add('read');
+    } else {
+        toggleRead.textContent = "Not read";
+        toggleRead.classList.add('unread');
+    }
 
     const bookRemove = document.createElement('div');
     bookRemove.classList.add('book-remove');
@@ -64,7 +104,6 @@ function createCard(book){
     const removeButton = document.createElement('button');
     removeButton.innerHTML = `<img src="../img/remove.png" alt="" class="remove-icon">`;
     removeButton.classList.add('remove-button');
-
 
     card.appendChild(info);
     info.appendChild(bookTitle);
@@ -75,8 +114,11 @@ function createCard(book){
     card.appendChild(bookRemove);
     bookRemove.appendChild(removeButton);
 
+    card.id = book.id;
+
     return card;
 }
+
 
 const dialog = document.querySelector(".book-dialog");
 const showButton = document.querySelector(".show-form");
@@ -146,8 +188,29 @@ form.addEventListener("submit", (e) => {
     }
 });
 
-document.body.addEventListener('click', function(event) {
-    if (event.target.closest('.remove-button')) {
-        console.log("hello");
+document.body.addEventListener('click', function(e) {
+    if (e.target.closest('.remove-button')) {
+        e.preventDefault();
+        const bookElement = e.target.closest('.book');
+        deleteCard(bookElement.id);
+    } 
+
+    if (e.target.closest('.toggle-read')) {
+        e.preventDefault();
+        const bookElement = e.target.closest('.book');
+        let readFlag = toggleRead(bookElement.id)
+        let readToggle = bookElement.querySelector('.toggle-read');
+
+        if (readFlag === true) {
+            readToggle.classList.add('read');
+            readToggle.classList.remove('unread');
+            readToggle.textContent = "Read"
+        } else {
+            readToggle.classList.add('unread');
+            readToggle.classList.remove('read');
+            readToggle.textContent = "Not read"
+        }
     }
 });
+
+
