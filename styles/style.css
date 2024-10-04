@@ -5,6 +5,26 @@
     padding: 0;
 }
 
+:root {
+    --fg0: #fbf1c7;
+    --fg1: #ebdbb2;
+    --fg2: #d5c4a1;
+    --fg3: #bdae93;
+    --fg4: #a89984;
+    --bg0: #282828;
+    --bg1: #3c3836;
+    --bg2: #504945;
+    --bg3: #665c54;
+    --bg4: #7c6f64;
+    --red: #fb4934;
+    --orange: #fe8019;
+    --yellow: #fabd2f;
+    --green: #b8bb26;
+    --blue: #83a598;
+    --purple: #d3869b;
+    --aqua: #8ec07c;
+}
+
 html {
     height: 100%;
     width: 100%;
@@ -92,7 +112,7 @@ input[type='number'] {
 }
 
 .header {
-    background: #35363E;
+    background: var(--bg1);
     box-shadow: 1px 1px 20px #171717;
     display: flex;
     justify-content: center;
@@ -126,7 +146,6 @@ input[type='number'] {
 .content {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-
     gap: 100px;
     margin: 50px;
     overflow: scroll;
@@ -136,7 +155,8 @@ input[type='number'] {
     display: flex;
     flex-direction: column;
     height: 300px;
-    background: #E9E7D7;
+    background: var(--fg0);
+    border-left: 10px solid orange;
     border-radius: 10px;
     box-shadow: 7px 7px 20px #171717;
 }
@@ -169,9 +189,19 @@ input[type='number'] {
 }
 
 .toggle-read {
-    width: 75%;
+    width: 50%;
+    border-radius: 5px;
     padding: 20px;
 }
+
+.read {
+    background: var(--green);
+}
+
+.unread {
+    background: var(--red);
+}
+
 
 .book-remove {
     margin-top: auto;
@@ -183,5 +213,4 @@ input[type='number'] {
     height: 25px;
     width: 25px;
 }
-
 

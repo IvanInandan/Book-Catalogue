@@ -7,14 +7,82 @@ function Book(author, title, pages, read) {
     this.read = read;
 }
 
-function addBookToLibrary() {
+function addBookToLibrary(book, library) {
+    library.push(book);
+}
 
+function displayLibrary(library) {
+    let content = document.querySelector(".content");
+
+    let newContent = document.createElement('div');
+    newContent.classList.add('content');
+
+    for(const book of library) {
+        newContent.appendChild(createCard(book));
+    }
+
+    content.innerHTML = newContent.innerHTML;
+}
+
+function createCard(book){
+    let readText;
+
+    if (book.read === true){
+        readText = "Read";
+    } else {
+        readText = "Not read"
+    }
+
+    const card = document.createElement('div');
+    card.classList.add('book');
+
+    const info = document.createElement('div');
+    info.classList.add('info-container');
+
+    const bookTitle = document.createElement('div');
+    bookTitle.textContent = book.title;
+    bookTitle.classList.add('book-title');
+
+    const bookAuthor = document.createElement('div');
+    bookAuthor.textContent = book.author;
+    bookAuthor.classList.add('book-author');
+
+    const bookPages = document.createElement('div');
+    bookPages.textContent = `Pages: ${book.pages}`;
+    bookPages.classList.add('book-pages');
+
+    const bookRead = document.createElement('div');
+    bookRead.classList.add('book-read');
+
+    const toggleRead = document.createElement('button');
+    toggleRead.textContent = readText;
+    toggleRead.classList.add('toggle-read');
+
+    const bookRemove = document.createElement('div');
+    bookRemove.classList.add('book-remove');
+
+    const removeButton = document.createElement('button');
+    removeButton.innerHTML = `<img src="../img/remove.png" alt="" class="remove-icon">`;
+    removeButton.classList.add('remove-button');
+
+
+    card.appendChild(info);
+    info.appendChild(bookTitle);
+    info.appendChild(bookAuthor);
+    info.appendChild(bookPages);
+    info.appendChild(bookRead);
+    bookRead.appendChild(toggleRead);
+    card.appendChild(bookRemove);
+    bookRemove.appendChild(removeButton);
+
+    return card;
 }
 
 const dialog = document.querySelector(".book-dialog");
 const showButton = document.querySelector(".show-form");
 const closeButton = document.querySelector(".close-dialog");
 const form = document.querySelector(".book-form");
+const deleteBook = document.querySelector(".remove-button");
 
 showButton.addEventListener("click", (e) => {
     dialog.showModal();
@@ -68,10 +136,18 @@ form.addEventListener("submit", (e) => {
             }
         }).showToast();
 
+        const book = new Book(title, author, pages, read);
+
+        addBookToLibrary(book, myLibrary);
+        displayLibrary(myLibrary);
+
         form.reset();
         dialog.close();
-    
+    }
+});
 
-        console.log({title, author, pages, read})
+document.body.addEventListener('click', function(event) {
+    if (event.target.closest('.remove-button')) {
+        console.log("hello");
     }
 });
